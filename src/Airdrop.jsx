@@ -12,6 +12,7 @@ const Airdrop = () => {
         // await connection.confirmTransaction(transactionSignature, 'processed')
 
         const balance = await connection.getBalance(wallet.publicKey)
+        
         alert(`Airdrop successful! New balance: ${(balance / 1e9).toFixed(2)} SOL`);
 
     }
