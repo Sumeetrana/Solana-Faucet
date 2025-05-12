@@ -1,14 +1,23 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import React from 'react'
 import './App.css'
+import { ConnectionProvider, WalletProvider } from '@solana/wallet-adapter-react'
+import { WalletConnectButton, WalletDisconnectButton, WalletModalProvider, WalletMultiButton } from '@solana/wallet-adapter-react-ui'
+
+import '@solana/wallet-adapter-react-ui/styles.css'
+import Airdrop from './Airdrop'
 
 function App() {
 
   return (
-    <>
-      Hello World
-    </>
+    <ConnectionProvider endpoint='https://api.devnet.solana.com'>
+      <WalletProvider wallets={[]} autoConnect>
+        <WalletModalProvider>
+          <WalletMultiButton />
+          <WalletDisconnectButton />
+          <Airdrop />
+        </WalletModalProvider>
+      </WalletProvider>
+    </ConnectionProvider>
   )
 }
 
